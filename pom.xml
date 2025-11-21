@@ -8,6 +8,7 @@
         <version>3.3.3</version>
     </parent>
 
+    <groupId>com.qbit.framework</groupId>
     <artifactId>infra-dependencies</artifactId>
     <version>0.0.1</version>
 
