@@ -57,6 +57,7 @@
         <itext.html2pdf.version>5.0.4</itext.html2pdf.version>
         <itext.pdf.version>5.5.13.4</itext.pdf.version>
         <itext.font-asian.version>8.0.3</itext.font-asian.version>
+        <itext.itext-asian.version>5.2.0</itext.itext-asian.version>
         <aws.ses.version>2.35.7</aws.ses.version>
     </properties>
 
@@ -220,6 +221,11 @@
                 <artifactId>font-asian</artifactId>
                 <version>${itext.font-asian.version}</version>
             </dependency>
+                  <dependency>
+                <groupId>com.itextpdf</groupId>
+                <artifactId>font-asian</artifactId>
+                <version>${itext.itext-asian.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
@@ -259,6 +265,11 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${pgsql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${lombok-mapstruct-binding.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.xingfudeshi</groupId>
