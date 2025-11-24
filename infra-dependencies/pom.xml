@@ -218,10 +218,10 @@
             </dependency>
             <dependency>
                 <groupId>com.itextpdf</groupId>
-                <artifactId>font-asian</artifactId>
+                <artifactId>itext-asian</artifactId>
                 <version>${itext.font-asian.version}</version>
             </dependency>
-                  <dependency>
+            <dependency>
                 <groupId>com.itextpdf</groupId>
                 <artifactId>font-asian</artifactId>
                 <version>${itext.itext-asian.version}</version>
