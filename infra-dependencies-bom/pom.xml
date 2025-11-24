@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.qbit.framework</groupId>
-    <artifactId>infra-dependencies</artifactId>
+    <artifactId>infra-dependencies-bom</artifactId>
     <version>0.0.1</version>
     <packaging>pom</packaging>
 
-    <name>infra-dependencies</name>
+    <name>infra-dependencies-bom</name>
     <description>Infra dependency management BOM</description>
 
     <properties>

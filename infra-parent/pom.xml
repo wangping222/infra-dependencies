@@ -21,7 +21,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.qbit.framework</groupId>
-                <artifactId>infra-dependencies</artifactId>
+                <artifactId>infra-dependencies-bom</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>

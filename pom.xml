@@ -12,7 +12,7 @@
     <description>Aggregator for infra BOM and parent</description>
 
     <modules>
-        <module>infra-dependencies</module>
+        <module>infra-dependencies-bom</module>
         <module>infra-parent</module>
     </modules>
 
