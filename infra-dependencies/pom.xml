@@ -219,12 +219,12 @@
             <dependency>
                 <groupId>com.itextpdf</groupId>
                 <artifactId>itext-asian</artifactId>
-                <version>${itext.font-asian.version}</version>
+                <version>${itext.itext-asian.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.itextpdf</groupId>
                 <artifactId>font-asian</artifactId>
-                <version>${itext.itext-asian.version}</version>
+                <version>${itext.font-asian.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis</groupId>
