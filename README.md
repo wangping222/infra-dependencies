@@ -1,57 +1,68 @@
 # infra-projects
 
-一个遵循 Spring 生态设计的多模块仓库，提供：
-- `infra-dependencies`：纯 BOM，用于统一依赖版本（类似 `spring-boot-dependencies`）
-- `infra-parent`：父 POM，用于统一构建属性与插件管理（类似 `spring-boot-starter-parent`）
+基础设施依赖管理项目，提供统一的依赖版本和构建配置。
 
-## 模块结构
-- 根聚合器：`pom.xml`
-  - `infra-dependencies/`：仅包含 `<dependencyManagement>` 和版本属性
-  - `infra-parent/`：包含通用 `<properties>`、`<pluginManagement>`，并 `import` 本仓库 BOM
+## 模块说明
 
-## 兼容与基线
-- Spring Boot：`3.3.3`
-- Spring Cloud：`2023.0.1`
-- JDK：`17`（如需 `21`，可在 `infra-parent/pom.xml` 中将 `java.version` 调整为 `21`）
+| 模块 | 职责 | 类比 |
+|------|------|------|
+| `infra-dependencies-bom` | 仅依赖版本管理 | `spring-boot-dependencies` |
+| `infra-parent` | 构建配置 + 插件管理 | `spring-boot-starter-parent` |
+  
+## 技术栈
 
-## 快速开始
-### 作为父工程使用（推荐）
-在你的业务项目 `pom.xml`：
+- **Spring Boot**: 3.3.3
+- **Spring Cloud**: 2023.0.1
+- **JDK**: 17+
+
+## 使用方式
+
+### 方式一：继承父工程（推荐）
+
+获得依赖版本管理 + 构建配置：
+
 ```xml
 <parent>
-  <groupId>com.qbit.framework</groupId>
-  <artifactId>infra-parent</artifactId>
-  <version>0.0.1</version>
+    <groupId>com.qbit.framework</groupId>
+    <artifactId>infra-parent</artifactId>
+    <version>0.0.1</version>
 </parent>
 ```
-效果：
-- 自动导入 `infra-dependencies` BOM，对齐所有依赖版本
-- 统一 `maven-compiler-plugin` 等插件配置与注解处理器
 
-### 仅导入 BOM（不继承父工程）
-在你的业务项目 `pom.xml`：
+**包含：**
+- ✅ 所有依赖版本统一管理
+- ✅ 编译插件配置（lombok、mapstruct、mybatis-flex 注解处理器）
+- ✅ 测试、打包、源码、文档等插件配置
+
+### 方式二：仅导入 BOM
+
+仅需要依赖版本管理，自行管理构建配置：
+
 ```xml
 <dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>com.qbit.framework</groupId>
-      <artifactId>infra-dependencies</artifactId>
-      <version>0.0.1</version>
-      <type>pom</type>
-      <scope>import</scope>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.qbit.framework</groupId>
+            <artifactId>infra-dependencies-bom</artifactId>
+            <version>0.0.1</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
 </dependencyManagement>
 ```
-效果：
-- 仅进行依赖版本对齐，不改变你的插件与构建属性
 
-## 构建
-在仓库根目录：
+**包含：**
+- ✅ 所有依赖版本统一管理
+- ❌ 不包含任何构建配置
+
+## 本地构建
+
 ```bash
-mvn -DskipTests clean install
+mvn clean install -DskipTests
 ```
 
-## 说明
-- `infra-dependencies` 不包含 `<parent>` 和 `<build>`，确保作为纯 BOM 被安全传递
-- `infra-parent` 通过 `<dependencyManagement>` `import` 本仓库 BOM，以实现父工程继承即可生效的依赖版本管理
+## 设计原则
+
+- **BOM 纯粹性**：`infra-dependencies-bom` 仅包含 `<dependencyManagement>`，不含 `<build>` 配置
+- **职责分离**：依赖版本管理与构建配置分离，按需选择使用方式
