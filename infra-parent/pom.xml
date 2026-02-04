@@ -4,30 +4,18 @@
 
     <groupId>com.qbit.framework</groupId>
     <artifactId>infra-parent</artifactId>
-    <version>0.0.1</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>infra-parent</name>
     <description>Infra parent POM providing plugin management and default properties</description>
 
     <properties>
+        <revision>0.0.1</revision>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <lombok.version>1.18.38</lombok.version>
-        <mapstruct.version>1.6.3</mapstruct.version>
-        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
-        <mybatis-flex.version>1.11.1</mybatis-flex.version>
-        <flatten.maven.plugin.version>1.5.0</flatten.maven.plugin.version>
-        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
-        <maven.surefire.plugin.version>3.5.4</maven.surefire.plugin.version>
-        <spring.boot.maven.plugin.version>3.3.3</spring.boot.maven.plugin.version>
-        <maven.enforcer.plugin.version>3.2.1</maven.enforcer.plugin.version>
-        <maven.dependency.plugin.version>3.6.1</maven.dependency.plugin.version>
-        <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
-        <maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
-        <maven.clean.plugin.version>3.3.2</maven.clean.plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -91,7 +79,7 @@
                     <version>${maven.surefire.plugin.version}</version>
                     <configuration>
                         <parallel>methods</parallel>
-                        <useUnlimitedThreads>true</useUnlimitedThreads>
+                        <threadCount>1C</threadCount>
                         <reuseForks>true</reuseForks>
                         <argLine>-Dfile.encoding=UTF-8</argLine>
                     </configuration>
