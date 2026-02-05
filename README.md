@@ -2,12 +2,28 @@
 
 基础设施依赖管理项目，提供统一的依赖版本和构建配置。
 
+## 架构设计
+
+采用 **Spring Boot 标准架构**：
+
+```
+infra-parent
+  ├─ 定义所有依赖版本属性
+  ├─ 定义所有插件版本属性
+  └─ 配置 pluginManagement
+       ↑
+       │ 继承
+       │
+infra-dependencies-bom
+  └─ 定义 dependencyManagement（继承 parent 的属性）
+```
+
 ## 模块说明
 
 | 模块 | 职责 | 类比 |
 |------|------|------|
-| `infra-dependencies-bom` | 仅依赖版本管理 | `spring-boot-dependencies` |
-| `infra-parent` | 构建配置 + 插件管理 | `spring-boot-starter-parent` |
+| `infra-parent` | 属性定义 + 插件管理 | `spring-boot-starter-parent` |
+| `infra-dependencies-bom` | 依赖版本管理（继承 parent） | `spring-boot-dependencies` |
   
 ## 技术栈
 
@@ -56,6 +72,8 @@
 - ✅ 所有依赖版本统一管理
 - ❌ 不包含任何构建配置
 
+> **说明**：虽然 BOM 继承了 `infra-parent`，但通过 `import` 导入时，只会获取 `<dependencyManagement>` 中的内容，属性和插件配置不会被引入。
+
 ## 本地构建
 
 ```bash
@@ -64,5 +82,28 @@ mvn clean install -DskipTests
 
 ## 设计原则
 
-- **BOM 纯粹性**：`infra-dependencies-bom` 仅包含 `<dependencyManagement>`，不含 `<build>` 配置
-- **职责分离**：依赖版本管理与构建配置分离，按需选择使用方式
+- **属性统一管理**：所有版本号只在 `infra-parent` 定义一次，避免重复维护
+- **BOM 纯粹性**：`infra-dependencies-bom` 虽继承 parent，但仅包含 `<dependencyManagement>`，可被安全导入
+- **职责分离**：依赖版本管理（BOM）与构建配置（parent）分离，按需选择使用方式
+- **遵循业界标准**：架构设计与 Spring Boot、Spring Cloud 保持一致
+
+## 维护指南
+
+### 更新依赖版本
+
+只需在 `infra-parent/pom.xml` 的 `<properties>` 中修改对应版本号：
+
+```xml
+<properties>
+    <lombok.version>1.18.38</lombok.version>
+    <mapstruct.version>1.6.3</mapstruct.version>
+    <!-- ... 其他版本 ... -->
+</properties>
+```
+
+### 构建顺序
+
+Maven Reactor 自动按依赖关系构建：
+1. `infra-parent` (定义属性)
+2. `infra-dependencies-bom` (继承属性)
+3. `infra-projects` (聚合器)

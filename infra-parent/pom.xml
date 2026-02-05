@@ -17,12 +17,54 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
+        <!-- Spring & Framework Versions -->
+        <spring.boot.dependencies.version>3.3.3</spring.boot.dependencies.version>
+        <spring-cloud.version>2023.0.1</spring-cloud.version>
+        
         <!-- Dependency Versions -->
+        <fastjson2.version>2.0.59</fastjson2.version>
         <lombok.version>1.18.38</lombok.version>
+        <swagger.annotations.version>2.2.22</swagger.annotations.version>
+        <interlace.sdk.version>3.0.5</interlace.sdk.version>
+        <aliyun.sdk.oss.version>3.18.2</aliyun.sdk.oss.version>
+        <aws.sdk.s3.version>2.38.1</aws.sdk.s3.version>
+        <xxl.job.core.version>3.2.0</xxl.job.core.version>
+        <fastexcel.version>1.3.0</fastexcel.version>
+        <mybatis.version>3.5.15</mybatis.version>
+        <mybatis-flex.version>1.11.1</mybatis-flex.version>
+        <mysql.version>8.0.39</mysql.version>
+        <mysql.connector.version>8.2.0</mysql.connector.version>
+        <pgsql.version>42.6.1</pgsql.version>
         <mapstruct.version>1.6.3</mapstruct.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
-        <mybatis-flex.version>1.11.1</mybatis-flex.version>
-
+        <kotlin.version>1.9.24</kotlin.version>
+        <okhttp.version>4.12.0</okhttp.version>
+        <dubbo.version>3.3.0</dubbo.version>
+        <curator.version>5.2.1</curator.version>
+        <nacos.version>2023.0.3.2</nacos.version>
+        <knife4j.version>4.6.0</knife4j.version>
+        <redisson.version>3.37.0</redisson.version>
+        <captcha.version>1.3.0</captcha.version>
+        <web3j.version>4.9.8</web3j.version>
+        <jjwt.version>0.12.3</jjwt.version>
+        <openapi.doc.version>2.6.0</openapi.doc.version>
+        <swagger-openapiv3.version>2.2.22</swagger-openapiv3.version>
+        <dynamictp.version>1.1.9.1</dynamictp.version>
+        <jakarta.validation.version>3.0.2</jakarta.validation.version>
+        <instancio-junit.version>5.4.0</instancio-junit.version>
+        <generator.version>1.0.1</generator.version>
+        <protobuf.java.version>3.24.0</protobuf.java.version>
+        <aliyun-log-logback.version>0.1.30</aliyun-log-logback.version>
+        <aliyun.dm20151123.version>1.6.2</aliyun.dm20151123.version>
+        <aliyun.ecs20140526.version>5.1.2</aliyun.ecs20140526.version>
+        <easyexcel.version>3.3.4</easyexcel.version>
+        <velocity.version>1.7</velocity.version>
+        <itext.html2pdf.version>5.0.4</itext.html2pdf.version>
+        <itext.pdf.version>5.5.13.4</itext.pdf.version>
+        <itext.asian.version>5.2.0</itext.asian.version>
+        <aws.ses.version>2.35.7</aws.ses.version>
+        <tika.version>3.2.3</tika.version>
+        
         <!-- Maven Plugin Versions -->
         <flatten.maven.plugin.version>1.5.0</flatten.maven.plugin.version>
         <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
@@ -32,19 +74,8 @@
         <maven.dependency.plugin.version>3.6.1</maven.dependency.plugin.version>
         <maven.source.plugin.version>3.3.0</maven.source.plugin.version>
         <maven.javadoc.plugin.version>3.6.3</maven.javadoc.plugin.version>
+        <maven.clean.plugin.version>3.3.2</maven.clean.plugin.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.qbit.framework</groupId>
-                <artifactId>infra-dependencies-bom</artifactId>
-                <version>${project.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>
