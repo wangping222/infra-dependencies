@@ -64,6 +64,7 @@
         <itext.asian.version>5.2.0</itext.asian.version>
         <aws.ses.version>2.35.7</aws.ses.version>
         <tika.version>3.2.3</tika.version>
+        <commons-io.version>2.19.0</commons-io.version>
         
         <!-- Maven Plugin Versions -->
         <flatten.maven.plugin.version>1.5.0</flatten.maven.plugin.version>
