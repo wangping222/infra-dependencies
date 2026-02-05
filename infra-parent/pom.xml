@@ -156,7 +156,6 @@
                     <version>${maven.surefire.plugin.version}</version>
                     <configuration>
                         <parallel>methods</parallel>
-                        <threadCount>1C</threadCount>
                         <reuseForks>true</reuseForks>
                         <argLine>-Dfile.encoding=UTF-8</argLine>
                     </configuration>
